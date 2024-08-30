@@ -1,0 +1,58 @@
+\documentclass{article}
+\usepackage{graphicx}
+\usepackage{textmerg}
+\usepackage{xstring}
+\usepackage{fancyhdr}
+
+\title{First and Third Trinity Boat Club College Bill \\ Michaelmas Term \\ \includegraphics[scale=0.15]{crest.jpg}}
+\author{Secretary - Andrew Farquharson}
+
+\begin{document}
+	\pagestyle{fancy}
+	\fancyhead{}
+	\fancyhead[c]{First and Third Trinity Boat Club College Bill \\ Michaelmas Term}
+	
+	\fancyfoot[c]{Secretary - A. J. Farquharson}
+	
+\Fields{\name\crsid\autumnhead\winterhead\crewpastaout\totaldebt\crewpastain\misc\totalcredit\netcost}
+\Merge{data_stripped.dat}{%	
+	
+	\begin{center}
+		\includegraphics[scale=0.15]{crest.jpg}
+	\end{center}
+	
+	\begin{description}
+		\item[Bill for:]  \name
+		\item[CRSid:]  \crsid
+	\end{description}
+	
+	\section{Debts}
+	\begin{description}
+		\IfStrEq{\autumnhead}{0}{\space}{\item[Autumn Head Race Entry Fee:] £\autumnhead}
+		
+		\IfStrEq{\winterhead}{0}{\space}{\item[Winter Head Race Entry Fee:] £\winterhead}
+		
+		\IfStrEq{\crewpastaout}{0}{\space}{\item[Crew Pastas Attended:] £\crewpastaout}
+	\end{description}
+	Total Debt: £\totaldebt
+	
+	\section{Credit}
+	\begin{description}
+		\IfStrEq{\crewpastain}{0}{\space}{\item[Crew Pasta Reimbursement:] £\crewpastain}
+	\end{description}
+	Total Credit: £\totalcredit 
+	\\
+	
+	\section{Net}
+	\noindent
+	\textbf{Total bill payable: } £\netcost
+	\\
+	
+	\noindent
+	NB: this will be automatically added to your next college bill and does not need to be manually paid
+	
+	\setcounter{section}{0} 
+	\cleardoublepage
+	
+}	
+\end{document}
